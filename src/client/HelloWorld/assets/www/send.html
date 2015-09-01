@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+	<style>body{background-color:white}</style>
+    <head>
+ 
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+            <meta http-equiv="Content-Type" charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		
+		<script src="js/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->	
+		<script src="js/bootstrap.min.js"></script>
+        <title>Hello World</title>
+    </head>
+    <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">SnapBook</a>
+        </div>
+      </div>
+    </div>
+    
+     <div class="container" style="margin-top: 30%;">
+
+		<div id="status" style="display:none;">
+		<div id="deviceready">
+			<p class="listening">listening</p>
+			<p class="received">received</p>	
+		</div>
+	
+		</div>
+		<div><button id="sendTest" type="button" class="btn btn-default" style="display:none;">SendTest</button></div>
+		<div>
+		  Message: <input type="text" id="message" name="message"><br>
+		  Remove After:
+		  <select id="lastFor" name="lastFor" class="form-control">
+			  <option value="300">Five Minute</option>
+			  <option value="1800">Half Hour</option>
+			  <option value="3600">One Hour</option>
+			  <option value="7200">Two Hour</option>
+			  <option value="43200">Half Day</option>
+			  <option value="86400">One Day</option>
+			  <option value="604800">One Week</option>
+			  <option value="2419200">One Month</option>
+		   </select>		
+			<button id="send" type="button" class="btn btn-default">Send</button>	
+		</div>
+    </div><!-- /.container -->
+    
+            	
+
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<script src="js/index.js"></script>
+		<script>
+		
+		app.initialize();
+		
+		$("#sendTest").click(function(){
+			
+			app.submissionTestEvent();
+		});
+		
+		$("#send").click(function(){
+			
+			app.submissionStatusEvent(app.getUserId(),$("#message").val(),$("#lastFor").val());
+		});
+		</script>
+    </body>
+</html>
